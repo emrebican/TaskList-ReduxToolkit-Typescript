@@ -1,7 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 
-export interface TaskState {
+interface TaskState {
   tasks: any;
 }
 
