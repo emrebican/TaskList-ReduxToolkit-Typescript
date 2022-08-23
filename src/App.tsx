@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import InputField from "./components/InputField";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Main>
+      <span>Todo List</span>
+      <InputField />
+    </Main>
   );
-}
+};
 
 export default App;
+
+const Main = styled.div`
+  height: 100vh;
+  background-color: #00a2ff;
+  font-family: "Roboto", sans-serif;
+
+  span {
+    position: relative;
+    padding-top: 2rem;
+    text-align: center;
+    display: block;
+    color: #fff;
+    font-size: 2.4rem;
+  }
+`;
