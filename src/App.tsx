@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import InputField from "./components/InputField";
+import ListField from "./components/ListField";
 
 const App: React.FC = () => {
   return (
     <Main>
       <span>Todo List</span>
       <InputField />
+      <ListField />
     </Main>
   );
 };
