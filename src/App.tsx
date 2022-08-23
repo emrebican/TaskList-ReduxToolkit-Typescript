@@ -17,7 +17,7 @@ export default App;
 
 const Main = styled.div`
   height: 100vh;
-  background-color: #00a2ff;
+  background-color: #0a8edb;
   font-family: "Roboto", sans-serif;
 
   span {
