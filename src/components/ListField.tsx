@@ -13,6 +13,7 @@ const ListField: React.FC = () => {
     title: string;
     id: string;
     completed: boolean;
+    edit: boolean;
   }
 
   return (

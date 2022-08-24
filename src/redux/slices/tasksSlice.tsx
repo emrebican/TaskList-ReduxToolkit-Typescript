@@ -13,6 +13,7 @@ interface TaskInterface {
   title: string;
   id: string;
   completed: boolean;
+  edit: boolean;
 }
 
 const tasksSlice = createSlice({
@@ -23,7 +24,12 @@ const tasksSlice = createSlice({
       return {
         tasks: [
           ...state.tasks,
-          { title: action.payload, id: nanoid(), completed: false },
+          {
+            title: action.payload,
+            id: nanoid(),
+            completed: false,
+            edit: false,
+          },
         ],
       };
     },
@@ -39,9 +45,17 @@ const tasksSlice = createSlice({
         (task: TaskInterface) => task.id !== action.payload
       );
     },
+    editTask: (state, action) => {
+      state.tasks = state.tasks.map((task: TaskInterface) =>
+        task.id === action.payload.id
+          ? { ...task, edit: !task.edit, title: action.payload.title }
+          : task
+      );
+    },
   },
 });
 
-export const { addTask, completeTask, removeTask } = tasksSlice.actions;
+export const { addTask, completeTask, removeTask, editTask } =
+  tasksSlice.actions;
 
 export default tasksSlice.reducer;
