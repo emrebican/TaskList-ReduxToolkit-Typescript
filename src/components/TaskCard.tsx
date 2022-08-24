@@ -1,5 +1,5 @@
 import CardWrapper from "./styled-folders/taskCard_styled";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { completeTask, removeTask, editTask } from "../redux/slices/tasksSlice";
 
@@ -22,7 +22,7 @@ const TaskCard = ({ task }: Prop) => {
   const [edit, setEdit] = useState(task.title);
 
   const dispatch = useDispatch();
-  console.log(task);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,14 +31,17 @@ const TaskCard = ({ task }: Prop) => {
 
   useEffect(() => {
     setEdit(task.title);
+    inputRef.current?.focus();
   }, [task.edit]);
 
   return (
     <CardWrapper>
       <form onSubmit={handleSubmit}>
-        {task.edit ? (
+        {task.edit && !task.completed ? (
           <input
             type="text"
+            ref={inputRef}
+            required
             value={edit}
             onChange={(e) => setEdit(e.target.value)}
           />

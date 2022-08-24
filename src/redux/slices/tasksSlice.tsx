@@ -47,7 +47,7 @@ const tasksSlice = createSlice({
     },
     editTask: (state, action) => {
       state.tasks = state.tasks.map((task: TaskInterface) =>
-        task.id === action.payload.id
+        task.id === action.payload.id && !task.completed
           ? { ...task, edit: !task.edit, title: action.payload.title }
           : task
       );

@@ -9,15 +9,32 @@ const CardWrapper = styled.div`
     flex-wrap: wrap;
     border-radius: 6px;
     padding: 0 20px;
-    background-color: orange;
+    background-color: #ffc107;
     box-shadow: 5px 5px 5px #212121;
 
-    article,s {
-        font-size: 1.6rem;
-        color: #eee;
+    .completedClass {
+        background-color: red;
     }
-    s {
-        color: #616161;
+
+    form {
+        flex-basis: 80%;
+
+        input {
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            width: 100%;
+            height: 2rem;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+        article,s {
+            font-size: 1.6rem;
+            color: #eee;
+        }
+        s {
+            color: #616161;
+        }
     }
 
     div {

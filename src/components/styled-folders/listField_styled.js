@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ListWrapper = styled.div`
     margin-top: 4rem;
-
+    
     section {
         display: flex;
         flex-wrap: wrap;
