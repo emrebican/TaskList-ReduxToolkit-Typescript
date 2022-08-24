@@ -18,11 +18,11 @@ const ListField: React.FC = () => {
   return (
     <ListWrapper>
       {tasks.length ? (
-        <div>
+        <section>
           {tasks.map((task: TaskInterface) => (
             <TaskCard key={task.id} task={task} />
           ))}
-        </div>
+        </section>
       ) : (
         <h2>There is no tasks, we are free today 🥳🥳🎉🎉🎉</h2>
       )}

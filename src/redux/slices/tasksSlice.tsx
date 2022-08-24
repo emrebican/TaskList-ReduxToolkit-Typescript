@@ -9,6 +9,12 @@ const initialState: TaskState = {
   tasks: [],
 };
 
+interface TaskInterface {
+  title: string;
+  id: string;
+  completed: boolean;
+}
+
 const tasksSlice = createSlice({
   name: "tasks",
   initialState,
@@ -21,9 +27,21 @@ const tasksSlice = createSlice({
         ],
       };
     },
+    completeTask: (state, action: PayloadAction<Object>) => {
+      state.tasks = state.tasks.map((task: TaskInterface) =>
+        task.id === action.payload
+          ? { ...task, completed: !task.completed }
+          : task
+      );
+    },
+    removeTask: (state, action: PayloadAction<Object>) => {
+      state.tasks = state.tasks.filter(
+        (task: TaskInterface) => task.id !== action.payload
+      );
+    },
   },
 });
 
-export const { addTask } = tasksSlice.actions;
+export const { addTask, completeTask, removeTask } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

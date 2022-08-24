@@ -1,3 +1,8 @@
+import CardWrapper from "./styled-folders/taskCard_styled";
+
+import { useDispatch } from "react-redux";
+import { completeTask, removeTask } from "../redux/slices/tasksSlice";
+
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { MdDone } from "react-icons/md";
@@ -13,13 +18,20 @@ type Prop = {
 };
 
 const TaskCard = ({ task }: Prop) => {
+  const dispatch = useDispatch();
+  console.log(task);
+
   return (
-    <form>
-      <span>{task.title}</span>
+    <CardWrapper>
+      <form>
+        {task.completed ? <s>{task.title}</s> : <article>{task.title}</article>}
+      </form>
       <div>
         <FaEdit />
+        <MdDone onClick={() => dispatch(completeTask(task.id))} />
+        <RiDeleteBack2Fill onClick={() => dispatch(removeTask(task.id))} />
       </div>
-    </form>
+    </CardWrapper>
   );
 };
 
